@@ -8,6 +8,7 @@ namespace GUI.DAO
 {
     public class TicketDAO
     {
+        //public static DataTable 
         public static List<Ticket> GetListTicketsByShowTimes(string showTimesID)
         {
             List<Ticket> listTicket = new List<Ticket>();

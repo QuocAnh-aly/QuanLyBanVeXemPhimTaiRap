@@ -120,5 +120,10 @@ namespace GUI.frmAdminUserControls
 				e.SuppressKeyPress = true;//Tắt tiếng *ting của windows
 			}
 		}
-	}
+
+        private void txtSearchCus_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+    }
 }

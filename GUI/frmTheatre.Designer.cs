@@ -91,6 +91,7 @@
             this.flpSeat.Name = "flpSeat";
             this.flpSeat.Size = new System.Drawing.Size(800, 400);
             this.flpSeat.TabIndex = 0;
+            this.flpSeat.Paint += new System.Windows.Forms.PaintEventHandler(this.flpSeat_Paint);
             // 
             // panel1
             // 
@@ -348,6 +349,7 @@
             this.chkCustomer.TabIndex = 0;
             this.chkCustomer.Text = "Khách Hàng Thành Viên";
             this.chkCustomer.UseVisualStyleBackColor = true;
+           // this.chkCustomer.CheckedChanged += new System.EventHandler(this.chkCustomer_CheckedChanged);
             this.chkCustomer.Click += new System.EventHandler(this.chkCustomer_Click);
             // 
             // grpLoaiVe

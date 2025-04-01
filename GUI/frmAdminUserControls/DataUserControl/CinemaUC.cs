@@ -129,5 +129,10 @@ namespace GUI.frmAdminUserControls.DataUserControl
             DeleteCinema(cinemaID);
             LoadCinemaList();
         }
+
+        private void dtgvCinema_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

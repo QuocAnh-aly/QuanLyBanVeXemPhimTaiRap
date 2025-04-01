@@ -2,6 +2,7 @@
 using GUI.DTO;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
 using System.Globalization;//thư viện thay đổi vùng/quốc gia
 using System.Linq;
@@ -11,6 +12,7 @@ namespace GUI
 {
     public partial class frmTheatre : Form
     {
+        
         int SIZE = 30;//Size của ghế
         int GAP = 7;//Khoảng cách giữa các ghế
 
@@ -26,7 +28,7 @@ namespace GUI
         float payment = 0;//Tiền phải trả
         int plusPoint = 0;//Số điểm tích lũy khi mua vé
 
-        Customer customer;//lưu lại khách hàng thành viên
+        Customer customer1;//lưu lại khách hàng thành viên
 
         ShowTimes Times;
         Movie Movie;
@@ -38,7 +40,7 @@ namespace GUI
             Times = showTimes;
             Movie = movie;
         }
-
+        
         private void frmTheatre_Load(object sender, EventArgs e)
         {
             ticketPrice = Times.TicketPrice;
@@ -61,6 +63,16 @@ namespace GUI
             listSeat = TicketDAO.GetListTicketsByShowTimes(Times.ID);
 
             LoadSeats(listSeat);
+
+            // Hiển thị khách hàng đã chọn trước đó (nếu có)
+            if (frmCustomer.SelectedCustomer != null)
+            {
+                customer1 = frmCustomer.SelectedCustomer;
+                chkCustomer.Checked = true;
+                lblCustomerName.Text = customer1.Name;
+                lblPoint.Text = customer1.Point.ToString();
+                ShowOrHideLablePoint();
+            }
         }
 
         private void LoadDataCinema(string cinemaName)
@@ -170,6 +182,7 @@ namespace GUI
             {
                 pnCustomer.Visible = false;
             }
+            
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -229,10 +242,10 @@ namespace GUI
                     {
                         Ticket ticket = btn.Tag as Ticket;
 
-                        ret += TicketDAO.BuyTicket(ticket.ID, ticket.Type, customer.ID, ticket.Price);
+                        ret += TicketDAO.BuyTicket(ticket.ID, ticket.Type, customer1.ID, ticket.Price);
                     }
-					customer.Point += plusPoint;
-					CustomerDAO.UpdatePointCustomer(customer.ID, customer.Point);
+					customer1.Point += plusPoint;
+					CustomerDAO.UpdatePointCustomer(customer1.ID, customer1.Point);
                 }
                 else
                 {
@@ -308,26 +321,31 @@ namespace GUI
 
         private void chkCustomer_Click(object sender, EventArgs e)
         {
-            if (chkCustomer.Checked == true)
-            {
-                frmCustomer frm = new frmCustomer();
-                if (frm.ShowDialog() == DialogResult.OK)
-                {
-                    customer = frm.customer;
-                    lblCustomerName.Text = customer.Name;
-                    lblPoint.Text = customer.Point + "";
-                    ShowOrHideLablePoint();
-                }
-                else
-                {
-                    chkCustomer.Checked = false;
-                }
-            }
-            else
-            {
-                ShowOrHideLablePoint();
-                customer = null;
-            }
+            //if (chkCustomer.Checked == true)
+            //{
+            //    frmCustomer frm = new frmCustomer();
+            //    //if (frm.ShowDialog() == DialogResult.OK)
+            //    frm.DialogResult = DialogResult.OK;
+            //    if (frm.DialogResult == DialogResult.OK)
+            //    //if()
+            //    {
+
+            //        customer1 = frm.customer1;
+            //        // lblCustomerName.Text = customer1.Name ;
+            //        lblCustomerName.Text = frm.customer2;
+            //        //lblPoint.Text = customer1.Point + "";
+            //        ShowOrHideLablePoint();
+            //    }
+            //    else
+            //    {
+            //        chkCustomer.Checked = false;
+            //    }
+            //}
+            //else
+            //{
+            //    ShowOrHideLablePoint();
+            //    customer1 = null;
+            //}
         }
 
         private void btnFreeTicket_Click(object sender, EventArgs e)
@@ -341,7 +359,7 @@ namespace GUI
                 return;
             }
             int pointFreeTicket = freeTickets * 20;
-            if (customer.Point < pointFreeTicket)
+            if (customer1.Point < pointFreeTicket)
             {
                 MessageBox.Show("BẠN KHÔNG ĐỦ ĐIỂM TÍCH LŨY ĐỂ ĐỔI [" + freeTickets + "] VÉ", "THÔNG BÁO");
                 return;
@@ -352,14 +370,14 @@ namespace GUI
                                         "THÔNG BÁO", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
                 {
-                    customer.Point -= pointFreeTicket;
+                    customer1.Point -= pointFreeTicket;
                     plusPoint -= freeTickets;
 
-                    if (CustomerDAO.UpdatePointCustomer(customer.ID, customer.Point))
+                    if (CustomerDAO.UpdatePointCustomer(customer1.ID, customer1.Point))
                     {
                         MessageBox.Show("BẠN ĐÃ DỔI ĐƯỢC [" + freeTickets + "] VÉ MIỄN PHÍ THÀNH CÔNG", "THÔNG BÁO");
                     }
-                    lblPoint.Text = "" + customer.Point;
+                    lblPoint.Text = "" + customer1.Point;
                     lblPlusPoint.Text = "" + plusPoint;
 
                     for (int i = 0; i < listSeatSelected.Count && freeTickets > 0; i++)
@@ -377,6 +395,11 @@ namespace GUI
                     LoadBill();
                 }
             }
+        }
+
+        private void flpSeat_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

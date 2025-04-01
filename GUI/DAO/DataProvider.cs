@@ -13,8 +13,8 @@ namespace GUI.DAO
 
         //private static string connectionSTR = "Data Source=THAITHANG-PC;Initial Catalog=QLRP;Integrated Security=True";
         //private static string connectionSTR = "Data Source=DESKTOP-G3TR9OQ;Initial Catalog=QLRP;Integrated Security=True";
-        private static string connectionSTR = Properties.Settings.Default.connectionSTR;//= "Data Source=THAITHANG-PC;Initial Catalog=QuanLyRapPhim;User ID=sa;pwd=thaithang1";
-
+        //private static string connectionSTR = Properties.Settings.Default.connectionSTR;//= "Data Source=THAITHANG-PC;Initial Catalog=QuanLyRapPhim;User ID=sa;pwd=thaithang1";
+        private static string connectionSTR = "Data Source=LAPTOP-QHOF49SH;Initial Catalog=QLRP;User ID=quocanh_Aly;Password=hellohi333z777";
         public static bool TestConnectionSQL(string conn)
         {
             bool result = false;
