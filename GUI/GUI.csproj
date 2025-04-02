@@ -132,7 +132,7 @@
     <Compile Include="DTO\ShowTimes.cs" />
     <Compile Include="DTO\Staff.cs" />
     <Compile Include="DTO\FormatMovie.cs" />
-    <Compile Include="DTO\Ticket.cs" />
+    <Compile Include="DTO\PrintTK.cs" />
     <Compile Include="frmAccountSettings.cs">
       <SubType>Form</SubType>
     </Compile>

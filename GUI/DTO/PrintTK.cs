@@ -4,11 +4,11 @@ using System.Linq;
 
 namespace GUI.DTO
 {
-    public class Ticket
+    public class PrintTK
     {
-        public Ticket() { }
+        public PrintTK() { }
 
-        public Ticket(string iD, int type, string showTimesID, string seatName
+        public PrintTK(string iD, int type, string showTimesID, string seatName
             , string customerID, string promotionID, float price,
             int status)
         {
@@ -21,7 +21,7 @@ namespace GUI.DTO
             this.Price = price;
         }
 
-        public Ticket(DataRow row)
+        public PrintTK(DataRow row)
         {
             this.ID = row["id"].ToString();
             this.Type = (int)row["LoaiVe"];

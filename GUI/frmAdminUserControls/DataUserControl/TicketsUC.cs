@@ -40,12 +40,12 @@ namespace GUI.frmAdminUserControls.DataUserControl
 
         void LoadTicketsByShowTimes(string showTimesID)
         {
-            List<Ticket> listTicket = TicketDAO.GetListTicketsByShowTimes(showTimesID);
+            List<PrintTK> listTicket = TicketDAO.GetListTicketsByShowTimes(showTimesID);
             dtgvTicket.DataSource = listTicket;
         }
         void LoadTicketsBoughtByShowTimes(string showTimesID)
         {
-            List<Ticket> listTicket = TicketDAO.GetListTicketsBoughtByShowTimes(showTimesID);
+            List<PrintTK> listTicket = TicketDAO.GetListTicketsBoughtByShowTimes(showTimesID);
             dtgvTicket.DataSource = listTicket;
         }
 

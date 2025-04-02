@@ -29,10 +29,12 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.labeltenkhachhang = new System.Windows.Forms.Label();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.labelinforfilm = new System.Windows.Forms.Label();
+            this.labelinfortime = new System.Windows.Forms.Label();
+            this.labelinforcustomer = new System.Windows.Forms.Label();
+            this.labelinforidkh = new System.Windows.Forms.Label();
+            this.labelinforghe = new System.Windows.Forms.Label();
+            this.labelinforphong = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -46,50 +48,77 @@
             this.label1.Text = "In Vé";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // tableLayoutPanel1
+            // labelinforfilm
             // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.label2, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.labeltenkhachhang, 1, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(122, 91);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(460, 258);
-            this.tableLayoutPanel1.TabIndex = 1;
-            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
+            this.labelinforfilm.AutoSize = true;
+            this.labelinforfilm.Location = new System.Drawing.Point(43, 107);
+            this.labelinforfilm.Name = "labelinforfilm";
+            this.labelinforfilm.Size = new System.Drawing.Size(44, 16);
+            this.labelinforfilm.TabIndex = 1;
+            this.labelinforfilm.Text = "label2";
             // 
-            // label2
+            // labelinfortime
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(103, 16);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Tên khách hàng";
+            this.labelinfortime.AutoSize = true;
+            this.labelinfortime.Location = new System.Drawing.Point(43, 140);
+            this.labelinfortime.Name = "labelinfortime";
+            this.labelinfortime.Size = new System.Drawing.Size(44, 16);
+            this.labelinfortime.TabIndex = 2;
+            this.labelinfortime.Text = "label3";
             // 
-            // labeltenkhachhang
+            // labelinforcustomer
             // 
-            this.labeltenkhachhang.AutoSize = true;
-            this.labeltenkhachhang.Location = new System.Drawing.Point(233, 0);
-            this.labeltenkhachhang.Name = "labeltenkhachhang";
-            this.labeltenkhachhang.Size = new System.Drawing.Size(0, 16);
-            this.labeltenkhachhang.TabIndex = 1;
+            this.labelinforcustomer.AutoSize = true;
+            this.labelinforcustomer.Location = new System.Drawing.Point(43, 173);
+            this.labelinforcustomer.Name = "labelinforcustomer";
+            this.labelinforcustomer.Size = new System.Drawing.Size(44, 16);
+            this.labelinforcustomer.TabIndex = 3;
+            this.labelinforcustomer.Text = "label4";
+            // 
+            // labelinforidkh
+            // 
+            this.labelinforidkh.AutoSize = true;
+            this.labelinforidkh.Location = new System.Drawing.Point(43, 208);
+            this.labelinforidkh.Name = "labelinforidkh";
+            this.labelinforidkh.Size = new System.Drawing.Size(44, 16);
+            this.labelinforidkh.TabIndex = 4;
+            this.labelinforidkh.Text = "label5";
+            // 
+            // labelinforghe
+            // 
+            this.labelinforghe.AutoSize = true;
+            this.labelinforghe.Location = new System.Drawing.Point(43, 243);
+            this.labelinforghe.Name = "labelinforghe";
+            this.labelinforghe.Size = new System.Drawing.Size(44, 16);
+            this.labelinforghe.TabIndex = 5;
+            this.labelinforghe.Text = "label6";
+            this.labelinforghe.Click += new System.EventHandler(this.labelinforghe_Click);
+            // 
+            // labelinforphong
+            // 
+            this.labelinforphong.AutoSize = true;
+            this.labelinforphong.Location = new System.Drawing.Point(43, 275);
+            this.labelinforphong.Name = "labelinforphong";
+            this.labelinforphong.Size = new System.Drawing.Size(44, 16);
+            this.labelinforphong.TabIndex = 6;
+            this.labelinforphong.Text = "label7";
+            this.labelinforphong.Click += new System.EventHandler(this.labelinforphong_Click);
             // 
             // FrmPrintTicket
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.tableLayoutPanel1);
+            this.Controls.Add(this.labelinforphong);
+            this.Controls.Add(this.labelinforghe);
+            this.Controls.Add(this.labelinforidkh);
+            this.Controls.Add(this.labelinforcustomer);
+            this.Controls.Add(this.labelinfortime);
+            this.Controls.Add(this.labelinforfilm);
             this.Controls.Add(this.label1);
             this.Name = "FrmPrintTicket";
             this.Text = "FrmPrintTicket";
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
+            this.Load += new System.EventHandler(this.FrmPrintTicket_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -98,8 +127,11 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label labeltenkhachhang;
+        private System.Windows.Forms.Label labelinforfilm;
+        private System.Windows.Forms.Label labelinfortime;
+        private System.Windows.Forms.Label labelinforcustomer;
+        private System.Windows.Forms.Label labelinforidkh;
+        private System.Windows.Forms.Label labelinforghe;
+        private System.Windows.Forms.Label labelinforphong;
     }
 }

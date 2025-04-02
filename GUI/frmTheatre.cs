@@ -16,7 +16,8 @@ namespace GUI
         int SIZE = 30;//Size của ghế
         int GAP = 7;//Khoảng cách giữa các ghế
 
-        List<Ticket> listSeat = new List<Ticket>();
+        List<PrintTK> listSeat = new List<PrintTK>();
+        List<string> paidSeatsList = new List<string>();
 
         //dùng lưu vết các Ghế đang chọn
         List<Button> listSeatSelected = new List<Button>();
@@ -101,7 +102,7 @@ namespace GUI
             //lại sài mặc định
         }
 
-        private void LoadSeats(List<Ticket> list)
+        private void LoadSeats(List<PrintTK> list)
         {
             flpSeat.Controls.Clear();
             for (int i = 0; i < list.Count; i++)
@@ -128,7 +129,7 @@ namespace GUI
                 rdoAdult.Checked = true;
 
                 btnSeat.BackColor = Color.Yellow;
-                Ticket ticket = btnSeat.Tag as Ticket;
+                PrintTK ticket = btnSeat.Tag as PrintTK;
 
                 ticket.Price = ticketPrice;
                 displayPrice = ticket.Price;
@@ -143,7 +144,7 @@ namespace GUI
             else if (btnSeat.BackColor == Color.Yellow)
             {
                 btnSeat.BackColor = Color.White;
-                Ticket ticket = btnSeat.Tag as Ticket;
+                PrintTK ticket = btnSeat.Tag as PrintTK;
 
                 total -= ticket.Price;
                 payment = total - discount;
@@ -220,6 +221,9 @@ namespace GUI
 
         private void btnPayment_Click(object sender, EventArgs e)
         {
+            //
+            
+            //
             if (listSeatSelected.Count == 0)
             {
                 MessageBox.Show("Vui lòng chọn vé trước khi thanh toán!");
@@ -229,6 +233,7 @@ namespace GUI
             foreach (Button btn in listSeatSelected)
             {
                 message += "[" + btn.Text + "] ";
+                paidSeatsList.Add(btn.Text);
             }
             message += "\nKhông?";
             DialogResult result = MessageBox.Show(message, "Hỏi Mua",
@@ -240,7 +245,7 @@ namespace GUI
                 {
                     foreach (Button btn in listSeatSelected)
                     {
-                        Ticket ticket = btn.Tag as Ticket;
+                        PrintTK ticket = btn.Tag as PrintTK;
 
                         ret += TicketDAO.BuyTicket(ticket.ID, ticket.Type, customer1.ID, ticket.Price);
                     }
@@ -251,7 +256,7 @@ namespace GUI
                 {
                     foreach (Button btn in listSeatSelected)
                     {
-                        Ticket ticket = btn.Tag as Ticket;
+                        PrintTK ticket = btn.Tag as PrintTK;
 
                         ret += TicketDAO.BuyTicket(ticket.ID, ticket.Type, ticket.Price);
                     }
@@ -270,7 +275,7 @@ namespace GUI
             if (rdoStudent.Checked == true)
             {
                 if (listSeatSelected.Count == 0) return;
-                Ticket ticket = listSeatSelected[listSeatSelected.Count - 1].Tag as Ticket;
+                PrintTK ticket = listSeatSelected[listSeatSelected.Count - 1].Tag as PrintTK;
                 ticket.Type = 2;
 
                 float oldPrice = ticket.Price;
@@ -288,7 +293,7 @@ namespace GUI
             if (rdoAdult.Checked == true)
             {
                 if (listSeatSelected.Count == 0) return;
-                Ticket ticket = listSeatSelected[listSeatSelected.Count - 1].Tag as Ticket;
+                PrintTK ticket = listSeatSelected[listSeatSelected.Count - 1].Tag as PrintTK;
                 ticket.Type = 1;
 
                 float oldPrice = ticket.Price;
@@ -306,7 +311,7 @@ namespace GUI
             if (rdoChild.Checked == true)
             {
                 if (listSeatSelected.Count == 0) return;
-                Ticket ticket = listSeatSelected[listSeatSelected.Count - 1].Tag as Ticket;
+                PrintTK ticket = listSeatSelected[listSeatSelected.Count - 1].Tag as PrintTK;
                 ticket.Type = 3;
 
                 float oldPrice = ticket.Price;
@@ -382,7 +387,7 @@ namespace GUI
 
                     for (int i = 0; i < listSeatSelected.Count && freeTickets > 0; i++)
                     {
-                        Ticket ticket = listSeatSelected[i].Tag as Ticket;
+                        PrintTK ticket = listSeatSelected[i].Tag as PrintTK;
                         if (ticket.Price != 0)
                         {
                             discount += ticket.Price;
@@ -400,6 +405,24 @@ namespace GUI
         private void flpSeat_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void buttoninve_Click(object sender, EventArgs e)
+        {
+            
+
+            //foreach (Button btn in listSeatSelected)
+            //{
+            //    PrintTK ticket = btn.Tag as PrintTK;
+            //    paidSeatsList.Add(ticket.SeatName); // Lưu tên ghế đã thanh toán
+            //}
+
+
+           
+            FrmPrintTicket frm = new FrmPrintTicket(Times,Movie, paidSeatsList);
+            this.Hide(); 
+            frm.ShowDialog();
+            this.Show();
         }
     }
 }

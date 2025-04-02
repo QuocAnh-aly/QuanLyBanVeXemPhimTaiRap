@@ -33,8 +33,8 @@ namespace GUI
 
         void LoadRevenue(string idMovie, DateTime fromDate, DateTime toDate)
         {
-            if (connection == null)
-                connection = new SqlConnection(connectionSTR);
+            //if (connection == null)
+            //    connection = new SqlConnection(connectionSTR);
 
             //string query = "SELECT P.TenPhim ,LC.ThoiGianChieu, CONVERT(TIME(0), LC.ThoiGianChieu) AS[Giờ chiếu], COUNT(V.id) AS[Số vé đã bán], SUM(TienBanVe)"
             //               + " FROM dbo.Ve AS V, dbo.LichChieu AS LC, dbo.DinhDangPhim AS DDP, Phim AS P"
@@ -43,7 +43,7 @@ namespace GUI
 
             //SqlCommand command = new SqlCommand("USP_GetReportRevenueByMovieAndDate @idMovie, @fromDate, @toDate", connection);
 
-            ////adapter = new SqlDataAdapter(query, connection);
+            //adapter = new SqlDataAdapter(query, connection);
 
             adapter = new SqlDataAdapter("USP_GetReportRevenueByMovieAndDate @idMovie, @fromDate, @toDate", connection);
             adapter.SelectCommand.Parameters.Add("@idMovie", SqlDbType.VarChar).Value = idMovie;

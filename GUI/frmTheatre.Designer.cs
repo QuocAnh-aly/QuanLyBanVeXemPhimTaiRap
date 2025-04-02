@@ -69,6 +69,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.lblDiscount = new System.Windows.Forms.Label();
             this.picFilm = new System.Windows.Forms.PictureBox();
+            this.buttoninve = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -349,7 +350,6 @@
             this.chkCustomer.TabIndex = 0;
             this.chkCustomer.Text = "Khách Hàng Thành Viên";
             this.chkCustomer.UseVisualStyleBackColor = true;
-           // this.chkCustomer.CheckedChanged += new System.EventHandler(this.chkCustomer_CheckedChanged);
             this.chkCustomer.Click += new System.EventHandler(this.chkCustomer_Click);
             // 
             // grpLoaiVe
@@ -428,6 +428,7 @@
             // panel6
             // 
             this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel6.Controls.Add(this.buttoninve);
             this.panel6.Controls.Add(this.btnCancel);
             this.panel6.Controls.Add(this.lblTotal);
             this.panel6.Controls.Add(this.btnPayment);
@@ -542,6 +543,16 @@
             this.picFilm.TabIndex = 7;
             this.picFilm.TabStop = false;
             // 
+            // buttoninve
+            // 
+            this.buttoninve.Location = new System.Drawing.Point(15, 148);
+            this.buttoninve.Name = "buttoninve";
+            this.buttoninve.Size = new System.Drawing.Size(133, 35);
+            this.buttoninve.TabIndex = 13;
+            this.buttoninve.Text = "In vé";
+            this.buttoninve.UseVisualStyleBackColor = true;
+            this.buttoninve.Click += new System.EventHandler(this.buttoninve_Click);
+            // 
             // frmTheatre
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -626,5 +637,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.NumericUpDown numericFreeTickets;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button buttoninve;
     }
 }

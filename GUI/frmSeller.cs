@@ -107,5 +107,10 @@ namespace GUI
         {
             LoadMovie(dtpThoiGian.Value);
         }
+
+        private void lvLichChieu_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

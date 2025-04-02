@@ -8,28 +8,27 @@ namespace GUI.DAO
 {
     public class TicketDAO
     {
-        //public static DataTable 
-        public static List<Ticket> GetListTicketsByShowTimes(string showTimesID)
+        public static List<PrintTK> GetListTicketsByShowTimes(string showTimesID)
         {
-            List<Ticket> listTicket = new List<Ticket>();
+            List<PrintTK> listTicket = new List<PrintTK>();
             string query = "select * from Ve where idLichChieu = '" + showTimesID + "'";
             DataTable data = DataProvider.ExecuteQuery(query);
             foreach (DataRow row in data.Rows)
             {
-                Ticket ticket = new Ticket(row);
+                PrintTK ticket = new PrintTK(row);
                 listTicket.Add(ticket);
             }
             return listTicket;
         }
 
-        public static List<Ticket> GetListTicketsBoughtByShowTimes(string showTimesID)
+        public static List<PrintTK> GetListTicketsBoughtByShowTimes(string showTimesID)
         {
-            List<Ticket> listTicket = new List<Ticket>();
+            List<PrintTK> listTicket = new List<PrintTK>();
             string query = "select * from Ve where idLichChieu = '" + showTimesID + "' and TrangThai = 1";
             DataTable data = DataProvider.ExecuteQuery(query);
             foreach (DataRow row in data.Rows)
             {
-                Ticket ticket = new Ticket(row);
+                PrintTK ticket = new PrintTK(row);
                 listTicket.Add(ticket);
             }
             return listTicket;
