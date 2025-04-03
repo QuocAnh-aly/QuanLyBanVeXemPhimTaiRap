@@ -35,6 +35,7 @@
             this.labelinforidkh = new System.Windows.Forms.Label();
             this.labelinforghe = new System.Windows.Forms.Label();
             this.labelinforphong = new System.Windows.Forms.Label();
+            this.labelinfortien = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -104,11 +105,21 @@
             this.labelinforphong.Text = "label7";
             this.labelinforphong.Click += new System.EventHandler(this.labelinforphong_Click);
             // 
+            // labelinfortien
+            // 
+            this.labelinfortien.AutoSize = true;
+            this.labelinfortien.Location = new System.Drawing.Point(43, 305);
+            this.labelinfortien.Name = "labelinfortien";
+            this.labelinfortien.Size = new System.Drawing.Size(44, 16);
+            this.labelinfortien.TabIndex = 7;
+            this.labelinfortien.Text = "label8";
+            // 
             // FrmPrintTicket
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.labelinfortien);
             this.Controls.Add(this.labelinforphong);
             this.Controls.Add(this.labelinforghe);
             this.Controls.Add(this.labelinforidkh);
@@ -133,5 +144,6 @@
         private System.Windows.Forms.Label labelinforidkh;
         private System.Windows.Forms.Label labelinforghe;
         private System.Windows.Forms.Label labelinforphong;
+        private System.Windows.Forms.Label labelinfortien;
     }
 }

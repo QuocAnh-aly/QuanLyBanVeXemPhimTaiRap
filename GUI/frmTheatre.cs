@@ -25,6 +25,7 @@ namespace GUI
         float displayPrice = 0;//Hiện thị giá vé
         float ticketPrice = 0;//Lưu giá vé gốc
         float total = 0;//Tổng giá tiền
+        float total1 = 0;
         float discount = 0;//Tiền được giảm
         float payment = 0;//Tiền phải trả
         int plusPoint = 0;//Số điểm tích lũy khi mua vé
@@ -209,7 +210,7 @@ namespace GUI
             chkCustomer.Enabled = false;
 
             ShowOrHideLablePoint();
-
+            total1 = total;
             total = 0;
             displayPrice = 0;
             discount = 0;
@@ -326,31 +327,7 @@ namespace GUI
 
         private void chkCustomer_Click(object sender, EventArgs e)
         {
-            //if (chkCustomer.Checked == true)
-            //{
-            //    frmCustomer frm = new frmCustomer();
-            //    //if (frm.ShowDialog() == DialogResult.OK)
-            //    frm.DialogResult = DialogResult.OK;
-            //    if (frm.DialogResult == DialogResult.OK)
-            //    //if()
-            //    {
-
-            //        customer1 = frm.customer1;
-            //        // lblCustomerName.Text = customer1.Name ;
-            //        lblCustomerName.Text = frm.customer2;
-            //        //lblPoint.Text = customer1.Point + "";
-            //        ShowOrHideLablePoint();
-            //    }
-            //    else
-            //    {
-            //        chkCustomer.Checked = false;
-            //    }
-            //}
-            //else
-            //{
-            //    ShowOrHideLablePoint();
-            //    customer1 = null;
-            //}
+            
         }
 
         private void btnFreeTicket_Click(object sender, EventArgs e)
@@ -410,16 +387,7 @@ namespace GUI
         private void buttoninve_Click(object sender, EventArgs e)
         {
             
-
-            //foreach (Button btn in listSeatSelected)
-            //{
-            //    PrintTK ticket = btn.Tag as PrintTK;
-            //    paidSeatsList.Add(ticket.SeatName); // Lưu tên ghế đã thanh toán
-            //}
-
-
-           
-            FrmPrintTicket frm = new FrmPrintTicket(Times,Movie, paidSeatsList);
+            FrmPrintTicket frm = new FrmPrintTicket(Times,Movie, paidSeatsList,total1);
             this.Hide(); 
             frm.ShowDialog();
             this.Show();
