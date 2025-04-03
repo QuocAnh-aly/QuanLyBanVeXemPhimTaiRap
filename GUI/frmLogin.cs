@@ -21,6 +21,7 @@ namespace GUI
             if (e.KeyCode == Keys.Enter)
             {
                 txtPassword.Focus();
+                e.SuppressKeyPress = true;
             }
         }
 
@@ -29,6 +30,7 @@ namespace GUI
             if (e.KeyCode == Keys.Enter)
             {
                 btnLogin.PerformClick();
+                e.SuppressKeyPress = true;
             }
         }
 

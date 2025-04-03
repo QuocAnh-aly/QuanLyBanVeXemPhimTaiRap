@@ -15,6 +15,13 @@ namespace GUI
             LoadCustomer();
 
             dtgvCustomer.SelectionChanged += dtgvCustomer_SelectionChanged;
+
+            txtCusID.KeyDown += txtCusID_KeyDown;
+            txtCusName.KeyDown += txtCusName_KeyDown;
+            txtCusBirth.KeyDown += txtCusBirth_KeyDown;
+            txtCusAddress.KeyDown += txtCusAddress_KeyDown;
+            txtCusPhone.KeyDown += txtCusPhone_KeyDown;
+            txtCusINumber.KeyDown += txtCusINumber_KeyDown;
         }
 
         public Customer customer;
@@ -36,6 +43,60 @@ namespace GUI
         private void btnShowCustomer_Click_1(object sender, EventArgs e)
         {
             LoadCustomerList();
+        }
+
+        private void txtCusID_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtCusName.Focus();
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void txtCusName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtCusBirth.Focus();
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void txtCusBirth_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtCusAddress.Focus();
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void txtCusAddress_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtCusPhone.Focus();
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void txtCusPhone_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtCusINumber.Focus();
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void txtCusINumber_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                nudPoint.Focus();
+                e.SuppressKeyPress = true;
+            }
         }
 
         void AddCustomerBinding()
