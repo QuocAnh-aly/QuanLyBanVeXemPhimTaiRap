@@ -11,6 +11,8 @@ namespace GUI
         public frmLogin()
         {
             InitializeComponent();
+
+            //txtUsername.
         }
 
         private void btnLogIn_Click(object sender, EventArgs e)
@@ -30,6 +32,9 @@ namespace GUI
             else if (result == 0)
             {
                 MessageBox.Show("SAI TÊN TÀI KHOẢN HOẶC MẬT KHẨU!!!!", "THÔNG BÁO");
+                txtPassword.Clear();
+                txtUsername.Clear();
+                txtUsername.Focus();
             }
             else
             {

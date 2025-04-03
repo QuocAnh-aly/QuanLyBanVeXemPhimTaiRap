@@ -13,34 +13,13 @@ namespace GUI
         {
             InitializeComponent();
             LoadCustomer();
+
+            dtgvCustomer.SelectionChanged += dtgvCustomer_SelectionChanged;
         }
 
         public Customer customer;
         public Customer customer1;
         public static Customer SelectedCustomer { get; private set; }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtCustomerID_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void grpCustomer_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void frmCustomer_Load(object sender, EventArgs e)
-        {
-
-        }
-
-
-
 
         BindingSource customerList = new BindingSource();
         void LoadCustomer()
@@ -61,13 +40,40 @@ namespace GUI
 
         void AddCustomerBinding()
         {
-            txtCusID.DataBindings.Add("Text", dtgvCustomer.DataSource, "Mã khách hàng", true, DataSourceUpdateMode.Never);
-            txtCusName.DataBindings.Add("Text", dtgvCustomer.DataSource, "Họ tên", true, DataSourceUpdateMode.Never);
-            txtCusBirth.DataBindings.Add("Text", dtgvCustomer.DataSource, "Ngày sinh", true, DataSourceUpdateMode.Never);
-            txtCusAddress.DataBindings.Add("Text", dtgvCustomer.DataSource, "Địa chỉ", true, DataSourceUpdateMode.Never);
-            txtCusPhone.DataBindings.Add("Text", dtgvCustomer.DataSource, "SĐT", true, DataSourceUpdateMode.Never);
-            txtCusINumber.DataBindings.Add("Text", dtgvCustomer.DataSource, "CMND", true, DataSourceUpdateMode.Never);
-            nudPoint.DataBindings.Add("Value", dtgvCustomer.DataSource, "Điểm tích lũy", true, DataSourceUpdateMode.Never);
+            //txtCusID.DataBindings.Add("Text", dtgvCustomer.DataSource, "Mã khách hàng", true, DataSourceUpdateMode.Never);
+            //txtCusName.DataBindings.Add("Text", dtgvCustomer.DataSource, "Họ tên", true, DataSourceUpdateMode.Never);
+            //txtCusBirth.DataBindings.Add("Text", dtgvCustomer.DataSource, "Ngày sinh", true, DataSourceUpdateMode.Never);
+            //txtCusAddress.DataBindings.Add("Text", dtgvCustomer.DataSource, "Địa chỉ", true, DataSourceUpdateMode.Never);
+            //txtCusPhone.DataBindings.Add("Text", dtgvCustomer.DataSource, "SĐT", true, DataSourceUpdateMode.Never);
+            //txtCusINumber.DataBindings.Add("Text", dtgvCustomer.DataSource, "CMND", true, DataSourceUpdateMode.Never);
+            //nudPoint.DataBindings.Add("Value", dtgvCustomer.DataSource, "Điểm tích lũy", true, DataSourceUpdateMode.Never);
+        
+            // NGĂN KHÔNG CHO DATA TỰ ĐỘNG BIND VÀO TRONG TEXTBOX NỮA
+        }
+
+        private void dtgvCustomer_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dtgvCustomer.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = dtgvCustomer.SelectedRows[0];
+                txtCusID.Text = selectedRow.Cells["Mã khách hàng"].Value.ToString();
+                txtCusName.Text = selectedRow.Cells["Họ tên"].Value.ToString();
+                txtCusBirth.Text = selectedRow.Cells["Ngày sinh"].Value.ToString();
+                txtCusAddress.Text = selectedRow.Cells["Địa chỉ"].Value.ToString();
+                txtCusPhone.Text = selectedRow.Cells["SĐT"].Value.ToString();
+                txtCusINumber.Text = selectedRow.Cells["CMND"].Value.ToString();
+                nudPoint.Value = Convert.ToDecimal(selectedRow.Cells["Điểm tích lũy"].Value);
+            }
+            else
+            {
+                txtCusID.Text = "";
+                txtCusName.Text = "";
+                txtCusBirth.Text = "";
+                txtCusAddress.Text = "";
+                txtCusPhone.Text = "";
+                txtCusINumber.Text = "";
+                nudPoint.Value = 0;
+            }
         }
 
         void InsertCustomer(string id, string hoTen, DateTime ngaySinh, string diaChi, string sdt, int cmnd)
@@ -136,7 +142,7 @@ namespace GUI
             if (e.KeyCode == Keys.Enter)
             {
                 btnSearchCus.PerformClick();
-                e.SuppressKeyPress = true;//Tắt tiếng *ting của windows
+                e.SuppressKeyPress = true;
             }
         }
 
@@ -172,13 +178,5 @@ namespace GUI
             frm.ShowDialog();
             this.Show();
         }
-
-        private void txtCustomerName_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-
-      
     }
 }

@@ -124,7 +124,6 @@
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(270, 32);
             this.txtUsername.TabIndex = 1;
-            this.txtUsername.UseSystemPasswordChar = true;
             // 
             // frmLogin
             // 
