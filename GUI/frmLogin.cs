@@ -53,8 +53,19 @@ namespace GUI
 
         private void mnuSetting_Click(object sender, EventArgs e)
         {
-      
             //frm.ShowDialog();
+        }
+
+        private void PassChanging_checkbox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (PassChanging_checkbox.Checked)
+            {
+                txtPassword.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                txtPassword.UseSystemPasswordChar = true;
+            }
         }
     }
 }
