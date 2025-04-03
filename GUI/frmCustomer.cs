@@ -48,7 +48,7 @@ namespace GUI
             //txtCusINumber.DataBindings.Add("Text", dtgvCustomer.DataSource, "CMND", true, DataSourceUpdateMode.Never);
             //nudPoint.DataBindings.Add("Value", dtgvCustomer.DataSource, "Điểm tích lũy", true, DataSourceUpdateMode.Never);
         
-            // NGĂN KHÔNG CHO DATA TỰ ĐỘNG BIND VÀO TRONG TEXTBOX NỮA
+            // NGĂN KHÔNG CHO DATA TỰ ĐỘNG BIND VÀO TRONG TEXTBOX NỮA NHA BỦM
         }
 
         private void dtgvCustomer_SelectionChanged(object sender, EventArgs e)
@@ -66,7 +66,7 @@ namespace GUI
             }
             else
             {
-                txtCusID.Text = "";
+                txtCusID.Text = "KH";
                 txtCusName.Text = "";
                 txtCusBirth.Text = "";
                 txtCusAddress.Text = "";

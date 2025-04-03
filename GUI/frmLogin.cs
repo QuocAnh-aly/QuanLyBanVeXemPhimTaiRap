@@ -12,7 +12,24 @@ namespace GUI
         {
             InitializeComponent();
 
-            //txtUsername.
+            txtUsername.KeyDown += txtUsername_KeyDown;
+            txtPassword.KeyDown += txtPassword_KeyDown;
+        }
+
+        private void txtUsername_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtPassword.Focus();
+            }
+        }
+
+        private void txtPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnLogin.PerformClick();
+            }
         }
 
         private void btnLogIn_Click(object sender, EventArgs e)
