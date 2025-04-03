@@ -11,10 +11,9 @@ namespace GUI.DAO
 
         private DataProvider() { }
 
-        //private static string connectionSTR = "Data Source=THAITHANG-PC;Initial Catalog=QLRP;Integrated Security=True";
-        //private static string connectionSTR = "Data Source=DESKTOP-G3TR9OQ;Initial Catalog=QLRP;Integrated Security=True";
-        //private static string connectionSTR = Properties.Settings.Default.connectionSTR;//= "Data Source=THAITHANG-PC;Initial Catalog=QuanLyRapPhim;User ID=sa;pwd=thaithang1";
         private static string connectionSTR = "Data Source=RAZER;Initial Catalog=QLRP;User ID=sa;Password=123";
+        //private static string connectionSTR1 = "Data Source=;Initial Catalog=QLRP;Integrated Security=True";
+
         public static bool TestConnectionSQL(string conn)
         {
             bool result = false;
