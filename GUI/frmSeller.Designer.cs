@@ -69,9 +69,10 @@
             // 
             // labelX
             // 
+            this.labelX.BackColor = System.Drawing.Color.Wheat;
             this.labelX.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelX.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelX.ForeColor = System.Drawing.Color.Blue;
+            this.labelX.ForeColor = System.Drawing.Color.DodgerBlue;
             this.labelX.Location = new System.Drawing.Point(0, 0);
             this.labelX.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelX.Name = "labelX";
@@ -92,6 +93,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.Color.Wheat;
             this.groupBox1.Controls.Add(this.dtpThoiGian);
             this.groupBox1.Controls.Add(this.cboFilmName);
             this.groupBox1.Controls.Add(this.cboFormatFilm);
@@ -195,6 +197,7 @@
             // 
             // lvLichChieu
             // 
+            this.lvLichChieu.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.lvLichChieu.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader5,
             this.columnHeader1,

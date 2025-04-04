@@ -239,5 +239,16 @@ namespace GUI
             frm.ShowDialog();
             this.Show();
         }
+
+        private void AddBtn_Click(object sender, EventArgs e)
+        {
+            txtCusID.Text = "KH";
+            txtCusName.Clear();
+            txtCusBirth.Clear();
+            txtCusAddress.Clear();
+            txtCusPhone.Clear();
+            txtCusINumber.Clear();
+            nudPoint.Value = 0;
+        }
     }
 }

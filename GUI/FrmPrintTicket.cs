@@ -42,7 +42,7 @@ namespace GUI
         private void FrmPrintTicket_Load(object sender, EventArgs e)
         {
 
-            labelinforfilm.Text = "CGV Hung Vuong | "  + times.MovieName;
+            labelinforfilm.Text = "Cineer Vietnam Corp. | "  + times.MovieName;
             labelinfortime.Text = times.Time.ToShortDateString() + " | "
                 + times.Time.ToShortTimeString() + " - "
                 + times.Time.AddMinutes(movies.Time).ToShortTimeString();
