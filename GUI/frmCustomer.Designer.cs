@@ -41,6 +41,7 @@
             this.txtSearchCus = new System.Windows.Forms.TextBox();
             this.btnDeleteCustomer = new System.Windows.Forms.Button();
             this.grpCustomer = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.nudPoint = new System.Windows.Forms.NumericUpDown();
             this.lblCusID = new System.Windows.Forms.Label();
             this.txtCusID = new System.Windows.Forms.TextBox();
@@ -55,7 +56,7 @@
             this.lblCusAddress = new System.Windows.Forms.Label();
             this.txtCusINumber = new System.Windows.Forms.TextBox();
             this.lblCusName = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.pnThanhVien.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvCustomer)).BeginInit();
             this.grpCustomer.SuspendLayout();
@@ -200,6 +201,7 @@
             // grpCustomer
             // 
             this.grpCustomer.BackColor = System.Drawing.Color.Silver;
+            this.grpCustomer.Controls.Add(this.button1);
             this.grpCustomer.Controls.Add(this.label3);
             this.grpCustomer.Controls.Add(this.nudPoint);
             this.grpCustomer.Controls.Add(this.lblCusID);
@@ -224,6 +226,16 @@
             this.grpCustomer.TabIndex = 24;
             this.grpCustomer.TabStop = false;
             this.grpCustomer.Text = "Thông tin khách hàng";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.label3.Location = new System.Drawing.Point(330, 111);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(123, 19);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "*MM/DD/YYYY*";
             // 
             // nudPoint
             // 
@@ -364,15 +376,14 @@
             this.lblCusName.TabIndex = 4;
             this.lblCusName.Text = "Họ tên:";
             // 
-            // label3
+            // button1
             // 
-            this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.label3.Location = new System.Drawing.Point(330, 111);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(123, 19);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "*MM/DD/YYYY*";
+            this.button1.Location = new System.Drawing.Point(547, 253);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(33, 27);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // frmCustomer
             // 
@@ -429,5 +440,6 @@
         private System.Windows.Forms.Label lblCusName;
         private System.Windows.Forms.Button buttonchonphim;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button button1;
     }
 }

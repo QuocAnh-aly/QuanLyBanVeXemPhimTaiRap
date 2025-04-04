@@ -69,7 +69,7 @@ namespace GUI.frmAdminUserControls.DataUserControl
                 {
                     if (genre.ID == item.ID)
                     {
-                        clbMovieGenre.SetItemChecked(i, true);
+                        clbMovieGenre.SetItemChecked(i, true);  
                         break;
                     }
                 }
