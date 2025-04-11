@@ -1,18 +1,17 @@
-﻿using GUI.DAO;
-using GUI.DTO;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Drawing;
 using System.Globalization;//thư viện thay đổi vùng/quốc gia
-using System.Linq;
 using System.Windows.Forms;
+using GUI.DAO;
+using GUI.DTO;
+using GUI.frmAdminUserControls;
 
 namespace GUI
 {
     public partial class frmTheatre : Form
     {
-        
+
         int SIZE = 30;//Size của ghế
         int GAP = 7;//Khoảng cách giữa các ghế
 
@@ -30,7 +29,7 @@ namespace GUI
         float payment = 0;//Tiền phải trả
         int plusPoint = 0;//Số điểm tích lũy khi mua vé
 
-        Customer customer1;//lưu lại khách hàng thành viên
+        Customer customer;//lưu lại khách hàng thành viên
 
         ShowTimes Times;
         Movie Movie;
@@ -42,12 +41,12 @@ namespace GUI
             Times = showTimes;
             Movie = movie;
         }
-        
+
         private void frmTheatre_Load(object sender, EventArgs e)
         {
             ticketPrice = Times.TicketPrice;
 
-            lblInformation.Text = "CGV Hung Vuong | " + Times.CinemaName + " | " + Times.MovieName;
+            lblInformation.Text = "Cineer Vietnam | " + Times.CinemaName + " | " + Times.MovieName;
             lblTime.Text = Times.Time.ToShortDateString() + " | "
                 + Times.Time.ToShortTimeString() + " - "
                 + Times.Time.AddMinutes(Movie.Time).ToShortTimeString();
@@ -69,10 +68,10 @@ namespace GUI
             // Hiển thị khách hàng đã chọn trước đó (nếu có)
             if (frmCustomer.SelectedCustomer != null)
             {
-                customer1 = frmCustomer.SelectedCustomer;
+                customer = frmCustomer.SelectedCustomer;
                 chkCustomer.Checked = true;
-                lblCustomerName.Text = customer1.Name;
-                lblPoint.Text = customer1.Point.ToString();
+                lblCustomerName.Text = customer.Name;
+                lblPoint.Text = customer.Point.ToString();
                 ShowOrHideLablePoint();
             }
         }
@@ -92,12 +91,10 @@ namespace GUI
 
             //Thread.CurrentThread.CurrentCulture = culture;
             //dùng thread để chuyển cả luồng đang chạy về vùng quốc gia đó
-
             lblTicketPrice.Text = displayPrice.ToString("c", culture);
             lblTotal.Text = total.ToString("c", culture);
             lblDiscount.Text = discount.ToString("c", culture);
             lblPayment.Text = payment.ToString("c", culture);
-
             //Đổi đơn vị tiền tệ
             //gán culture chỗ này thì chỉ có chỗ này sd culture này còn
             //lại sài mặc định
@@ -184,7 +181,7 @@ namespace GUI
             {
                 pnCustomer.Visible = false;
             }
-            
+
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -222,9 +219,6 @@ namespace GUI
 
         private void btnPayment_Click(object sender, EventArgs e)
         {
-            //
-            
-            //
             if (listSeatSelected.Count == 0)
             {
                 MessageBox.Show("Vui lòng chọn vé trước khi thanh toán!");
@@ -248,10 +242,10 @@ namespace GUI
                     {
                         PrintTK ticket = btn.Tag as PrintTK;
 
-                        ret += TicketDAO.BuyTicket(ticket.ID, ticket.Type, customer1.ID, ticket.Price);
+                        ret += TicketDAO.BuyTicket(ticket.ID, ticket.Type, customer.ID, ticket.Price);
                     }
-					customer1.Point += plusPoint;
-					CustomerDAO.UpdatePointCustomer(customer1.ID, customer1.Point);
+                    customer.Point += plusPoint;
+                    CustomerDAO.UpdatePointCustomer(customer.ID, customer.Point);
                 }
                 else
                 {
@@ -325,11 +319,6 @@ namespace GUI
             }
         }
 
-        private void chkCustomer_Click(object sender, EventArgs e)
-        {
-            
-        }
-
         private void btnFreeTicket_Click(object sender, EventArgs e)
         {
             int freeTickets = (int)numericFreeTickets.Value;
@@ -341,7 +330,7 @@ namespace GUI
                 return;
             }
             int pointFreeTicket = freeTickets * 20;
-            if (customer1.Point < pointFreeTicket)
+            if (customer.Point < pointFreeTicket)
             {
                 MessageBox.Show("BẠN KHÔNG ĐỦ ĐIỂM TÍCH LŨY ĐỂ ĐỔI [" + freeTickets + "] VÉ", "THÔNG BÁO");
                 return;
@@ -352,14 +341,14 @@ namespace GUI
                                         "THÔNG BÁO", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
                 {
-                    customer1.Point -= pointFreeTicket;
+                    customer.Point -= pointFreeTicket;
                     plusPoint -= freeTickets;
 
-                    if (CustomerDAO.UpdatePointCustomer(customer1.ID, customer1.Point))
+                    if (CustomerDAO.UpdatePointCustomer(customer.ID, customer.Point))
                     {
                         MessageBox.Show("BẠN ĐÃ DỔI ĐƯỢC [" + freeTickets + "] VÉ MIỄN PHÍ THÀNH CÔNG", "THÔNG BÁO");
                     }
-                    lblPoint.Text = "" + customer1.Point;
+                    lblPoint.Text = "" + customer.Point;
                     lblPlusPoint.Text = "" + plusPoint;
 
                     for (int i = 0; i < listSeatSelected.Count && freeTickets > 0; i++)
@@ -379,18 +368,37 @@ namespace GUI
             }
         }
 
-        private void flpSeat_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void buttoninve_Click(object sender, EventArgs e)
         {
-            
-            FrmPrintTicket frm = new FrmPrintTicket(Times,Movie, paidSeatsList,total1);
-            this.Hide(); 
+
+            FrmPrintTicket frm = new FrmPrintTicket(Times, Movie, paidSeatsList, total1);
+            this.Hide();
             frm.ShowDialog();
             this.Show();
+        }
+
+        private void chkCustomer_Click(object sender, EventArgs e)
+        {
+            if (chkCustomer.Checked == true)
+            {
+                frmCustomer frm = new frmCustomer();
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    customer = frm.customer;
+                    lblCustomerName.Text = customer.Name;
+                    lblPoint.Text = customer.Point + "";
+                    ShowOrHideLablePoint();
+                }
+                else
+                {
+                    chkCustomer.Checked = false;
+                }
+            }
+            else
+            {
+                ShowOrHideLablePoint();
+                customer = null;
+            }
         }
     }
 }

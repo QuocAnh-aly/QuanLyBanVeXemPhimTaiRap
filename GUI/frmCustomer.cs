@@ -25,7 +25,7 @@ namespace GUI
         }
 
         public Customer customer;
-        public Customer customer1;
+
         public static Customer SelectedCustomer { get; private set; }
 
         BindingSource customerList = new BindingSource();

@@ -1,8 +1,7 @@
-﻿using GUI.DAO;
-using GUI.DTO;
-using System;
-using System.Linq;
+﻿using System;
 using System.Windows.Forms;
+using GUI.DAO;
+using GUI.DTO;
 
 namespace GUI.frmAdminUserControls
 {
@@ -156,13 +155,13 @@ namespace GUI.frmAdminUserControls
             accountList.DataSource = AccountDAO.SearchAccountByStaffName(staffName);
         }
 
-		private void txtSearchAccount_KeyDown(object sender, KeyEventArgs e)
-		{
-			if (e.KeyCode == Keys.Enter)
-			{
-				btnSearchAccount.PerformClick();
-				e.SuppressKeyPress = true;//Tắt tiếng *ting của windows
-			}
-		}
-	}
+        private void txtSearchAccount_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnSearchAccount.PerformClick();
+                e.SuppressKeyPress = true;//Tắt tiếng *ting của windows
+            }
+        }
+    }
 }

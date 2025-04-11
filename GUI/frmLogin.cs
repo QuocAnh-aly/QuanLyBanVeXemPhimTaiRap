@@ -1,8 +1,7 @@
-﻿using GUI.DAO;
-using GUI.DTO;
-using System;
-using System.Linq;
+﻿using System;
 using System.Windows.Forms;
+using GUI.DAO;
+using GUI.DTO;
 
 namespace GUI
 {
@@ -36,30 +35,37 @@ namespace GUI
 
         private void btnLogIn_Click(object sender, EventArgs e)
         {
-            btnLogin.Enabled = false;
             string userName = txtUsername.Text;
             string passWord = txtPassword.Text;
             int result = Login(userName, passWord);
-            if (result == 1)
+
+            if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(passWord))
             {
-                Account loginAccount = AccountDAO.GetAccountByUserName(userName);
-                frmDashBoard frm = new frmDashBoard(loginAccount);
-                this.Hide();
-                frm.ShowDialog();
-                this.Show();
-            }
-            else if (result == 0)
-            {
-                MessageBox.Show("SAI TÊN TÀI KHOẢN HOẶC MẬT KHẨU!!!!", "THÔNG BÁO");
-                txtPassword.Clear();
-                txtUsername.Clear();
-                txtUsername.Focus();
+                MessageBox.Show("Vui lòng nhập đầy đủ tên đăng nhập và mật khẩu.", "Thông báo");
+                return;
             }
             else
             {
-                MessageBox.Show("KẾT NỐI THẤT BẠI", "THÔNG BÁO");
+                if (result == 1)
+                {
+                    Account loginAccount = AccountDAO.GetAccountByUserName(userName);
+                    this.Hide();
+                    frmDashBoard frm = new frmDashBoard(loginAccount);
+                    frm.ShowDialog();
+                    this.Show();
+                }
+                else if (result == 0)
+                {
+                    MessageBox.Show("SAI TÊN TÀI KHOẢN HOẶC MẬT KHẨU!!!!", "THÔNG BÁO");
+                    txtPassword.Clear();
+                    txtUsername.Clear();
+                    txtUsername.Focus();
+                }
+                else
+                {
+                    MessageBox.Show("KẾT NỐI THẤT BẠI", "THÔNG BÁO");
+                }
             }
-            btnLogin.Enabled = true;
         }
 
         private int Login(string userName, string passWord)
