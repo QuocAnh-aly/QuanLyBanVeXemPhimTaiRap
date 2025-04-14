@@ -220,7 +220,7 @@ namespace GUI
 
         }
 
-        private void buttonchonphim_Click(object sender, EventArgs e)
+        private void btnConfirm_Click(object sender, EventArgs e)
         {
             DataTable data = CustomerDAO.GetCustomerMember(txtCusID.Text, txtCusName.Text);
 
@@ -235,8 +235,8 @@ namespace GUI
            
 
             this.Close();
-            frmSeller frm = new frmSeller();
-            frm.ShowDialog();
+            //frmSeller frm = new frmSeller();
+            //frm.ShowDialog();
             this.Show();
         }
 

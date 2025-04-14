@@ -32,7 +32,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pnThanhVien = new System.Windows.Forms.Panel();
-            this.buttonchonphim = new System.Windows.Forms.Button();
+            this.btnConfirm = new System.Windows.Forms.Button();
             this.btnSearchCus = new System.Windows.Forms.Button();
             this.btnShowCustomer = new System.Windows.Forms.Button();
             this.dtgvCustomer = new System.Windows.Forms.DataGridView();
@@ -92,7 +92,7 @@
             // 
             // pnThanhVien
             // 
-            this.pnThanhVien.Controls.Add(this.buttonchonphim);
+            this.pnThanhVien.Controls.Add(this.btnConfirm);
             this.pnThanhVien.Controls.Add(this.btnSearchCus);
             this.pnThanhVien.Controls.Add(this.btnShowCustomer);
             this.pnThanhVien.Controls.Add(this.dtgvCustomer);
@@ -108,16 +108,16 @@
             this.pnThanhVien.Size = new System.Drawing.Size(875, 752);
             this.pnThanhVien.TabIndex = 1;
             // 
-            // buttonchonphim
+            // btnConfirm
             // 
-            this.buttonchonphim.BackColor = System.Drawing.Color.LightCoral;
-            this.buttonchonphim.Location = new System.Drawing.Point(729, 129);
-            this.buttonchonphim.Name = "buttonchonphim";
-            this.buttonchonphim.Size = new System.Drawing.Size(131, 53);
-            this.buttonchonphim.TabIndex = 30;
-            this.buttonchonphim.Text = "Chọn Phim";
-            this.buttonchonphim.UseVisualStyleBackColor = false;
-            this.buttonchonphim.Click += new System.EventHandler(this.buttonchonphim_Click);
+            this.btnConfirm.BackColor = System.Drawing.Color.LightCoral;
+            this.btnConfirm.Location = new System.Drawing.Point(729, 129);
+            this.btnConfirm.Name = "btnConfirm";
+            this.btnConfirm.Size = new System.Drawing.Size(131, 53);
+            this.btnConfirm.TabIndex = 30;
+            this.btnConfirm.Text = "Xác Nhận";
+            this.btnConfirm.UseVisualStyleBackColor = false;
+            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
             // btnSearchCus
             // 
@@ -439,7 +439,7 @@
         private System.Windows.Forms.Label lblCusAddress;
         private System.Windows.Forms.TextBox txtCusINumber;
         private System.Windows.Forms.Label lblCusName;
-        private System.Windows.Forms.Button buttonchonphim;
+        private System.Windows.Forms.Button btnConfirm;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button AddBtn;
     }

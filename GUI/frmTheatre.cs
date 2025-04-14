@@ -5,13 +5,11 @@ using System.Globalization;//thư viện thay đổi vùng/quốc gia
 using System.Windows.Forms;
 using GUI.DAO;
 using GUI.DTO;
-using GUI.frmAdminUserControls;
 
 namespace GUI
 {
     public partial class frmTheatre : Form
     {
-
         int SIZE = 30;//Size của ghế
         int GAP = 7;//Khoảng cách giữa các ghế
 
@@ -66,13 +64,41 @@ namespace GUI
             LoadSeats(listSeat);
 
             // Hiển thị khách hàng đã chọn trước đó (nếu có)
-            if (frmCustomer.SelectedCustomer != null)
+            //if (frmCustomer.SelectedCustomer != null)
+            //{
+            //    customer = frmCustomer.SelectedCustomer;
+            //    chkCustomer.Checked = true;
+            //    lblCustomerName.Text = customer.Name;
+            //    lblPoint.Text = customer.Point.ToString();
+            //    ShowOrHideLablePoint();
+            //}
+        }
+
+        private void chkCustomer_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkCustomer.Checked == true)
             {
-                customer = frmCustomer.SelectedCustomer;
-                chkCustomer.Checked = true;
-                lblCustomerName.Text = customer.Name;
-                lblPoint.Text = customer.Point.ToString();
+                frmCustomer frm = new frmCustomer();
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    //customer = frm.customer;
+                    //lblCustomerName.Text = customer.Name;
+                    //lblPoint.Text = customer.Point + "";
+                    customer = frmCustomer.SelectedCustomer;
+                    chkCustomer.Checked = true;
+                    lblCustomerName.Text = customer.Name;
+                    lblPoint.Text = customer.Point.ToString();
+                    ShowOrHideLablePoint();
+                }
+                else
+                {
+                    chkCustomer.Checked = false;
+                }
+            }
+            else
+            {
                 ShowOrHideLablePoint();
+                customer = null;
             }
         }
 
@@ -375,30 +401,6 @@ namespace GUI
             this.Hide();
             frm.ShowDialog();
             this.Show();
-        }
-
-        private void chkCustomer_Click(object sender, EventArgs e)
-        {
-            if (chkCustomer.Checked == true)
-            {
-                frmCustomer frm = new frmCustomer();
-                if (frm.ShowDialog() == DialogResult.OK)
-                {
-                    customer = frm.customer;
-                    lblCustomerName.Text = customer.Name;
-                    lblPoint.Text = customer.Point + "";
-                    ShowOrHideLablePoint();
-                }
-                else
-                {
-                    chkCustomer.Checked = false;
-                }
-            }
-            else
-            {
-                ShowOrHideLablePoint();
-                customer = null;
-            }
         }
     }
 }
