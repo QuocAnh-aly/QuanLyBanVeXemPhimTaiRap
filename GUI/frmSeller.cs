@@ -9,10 +9,11 @@ namespace GUI
 {
     public partial class frmSeller : Form
     {
-        public frmSeller()
+        public frmSeller(string ten)
         {
             InitializeComponent();
             dtpThoiGian.Value = DateTime.Now;
+            cboFilmName.Text = ten;
             LoadMovie(dtpThoiGian.Value);
         }
 

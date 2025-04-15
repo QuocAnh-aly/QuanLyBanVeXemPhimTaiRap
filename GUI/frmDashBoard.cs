@@ -39,7 +39,7 @@ namespace GUI
         private void btnSeller_Click(object sender, EventArgs e)
         {
             this.Hide();
-            frmSeller frm = new frmSeller();
+            frmFilm frm = new frmFilm();
             //frmCustomer frm = new frmCustomer();
             frm.ShowDialog();
             this.Show();

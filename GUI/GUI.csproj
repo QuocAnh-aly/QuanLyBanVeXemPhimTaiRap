@@ -169,6 +169,12 @@
     <Compile Include="frmAdminUserControls\DataUserControl\CinemaUC.Designer.cs">
       <DependentUpon>CinemaUC.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmAdminUserControls\DataUserControl\FilmUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="frmAdminUserControls\DataUserControl\FilmUC.Designer.cs">
+      <DependentUpon>FilmUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmAdminUserControls\DataUserControl\FormatMovieUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -216,6 +222,12 @@
     </Compile>
     <Compile Include="frmAdminUserControls\StaffUC.Designer.cs">
       <DependentUpon>StaffUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFilm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFilm.Designer.cs">
+      <DependentUpon>frmFilm.cs</DependentUpon>
     </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
@@ -279,6 +291,9 @@
     <EmbeddedResource Include="frmAdminUserControls\DataUserControl\CinemaUC.resx">
       <DependentUpon>CinemaUC.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmAdminUserControls\DataUserControl\FilmUC.resx">
+      <DependentUpon>FilmUC.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmAdminUserControls\DataUserControl\FormatMovieUC.resx">
       <DependentUpon>FormatMovieUC.cs</DependentUpon>
     </EmbeddedResource>
@@ -302,6 +317,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmAdminUserControls\StaffUC.resx">
       <DependentUpon>StaffUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFilm.resx">
+      <DependentUpon>frmFilm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
