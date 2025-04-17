@@ -40,7 +40,6 @@ namespace GUI
         {
             this.Hide();
             frmFilm frm = new frmFilm();
-            //frmCustomer frm = new frmCustomer();
             frm.ShowDialog();
             this.Show();
         }

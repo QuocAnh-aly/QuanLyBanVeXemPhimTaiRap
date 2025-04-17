@@ -34,7 +34,7 @@ namespace GUI
         {
             LoadPhimTheoNgay(dtpThoiGianphim.Value);
         }
-        private string connectionString = "Data Source=LAPTOP-QHOF49SH;Initial Catalog = QLRP; User ID = quocanh_Aly; Password=hellohi333z777";
+        private string connectionString = "Data Source=RAZER;Initial Catalog=QLRP;User ID=sa;Password=123";
         private void LoadPhimTheoNgay(DateTime ngay)
         {
             try
